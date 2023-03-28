@@ -25,6 +25,7 @@ void ListaPacientes::insertar(Paciente *p) {
 
 bool ListaPacientes::existe(string DNI) {
 	bool enc = false;
+	this->lPacientes->moverPrimero();
 	if (!this->lPacientes->estaVacia()) {
 		while (!this->lPacientes->alFinal() && !enc) {
 			if (this->lPacientes->consultar()->getDNI() == DNI) {
@@ -38,6 +39,7 @@ bool ListaPacientes::existe(string DNI) {
 
 Paciente* ListaPacientes::buscarPaciente(string DNI) {
 	Paciente *p = nullptr;
+	this->lPacientes->moverPrimero();
 	if (!this->lPacientes->estaVacia()) {
 		if (existe(DNI)) {
 			p = lPacientes->consultar();
@@ -47,9 +49,8 @@ Paciente* ListaPacientes::buscarPaciente(string DNI) {
 }
 
 Paciente* ListaPacientes::obtenerPrimerPaciente() {
-	Paciente *p = nullptr;
 	this->lPacientes->moverPrimero();
-	p = this->lPacientes->consultar();
+	Paciente *p = this->lPacientes->consultar();
 	this->lPacientes->eliminar();
 	return p;
 }
@@ -58,16 +59,23 @@ bool ListaPacientes::isEmpty() {
 	return this->lPacientes->estaVacia();
 }
 
-int ListaPacientes::NumPacientes() {
-	int total = 0;
-	if (!this->lPacientes->estaVacia()) {
-		if (!this->lPacientes->alFinal()) {
-			total++;
-			this->lPacientes->avanzar();
-			NumPacientes();
+int ListaPacientes::NumPacientesR(ListaDPI<Paciente*> *l) {
+	int totalMedicos = 0;
+	if (!l->estaVacia()) {
+		if (!l->alFinal()) {
+			totalMedicos++;
+			l->avanzar();
+			totalMedicos += NumPacientesR(l);
 		}
 	}
-	return total;
+	return totalMedicos;
+}
+
+int ListaPacientes::NumPacientesR() {
+	int cuenta;
+	this->lPacientes->moverPrimero();
+	cuenta = NumPacientesR(this->lPacientes);
+	return cuenta;
 }
 
 void ListaPacientes::mostrarR(ListaDPI<Paciente*> *l) {
@@ -78,6 +86,7 @@ void ListaPacientes::mostrarR(ListaDPI<Paciente*> *l) {
 		mostrarR(l);
 	}
 }
+
 void ListaPacientes::mostrarR() {
 	if (!this->lPacientes->estaVacia()) {
 		this->lPacientes->moverPrimero();

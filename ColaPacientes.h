@@ -10,7 +10,6 @@
 #include "Cola.h"
 #include "Paciente.h"
 
-
 class ColaPacientes {
 private:
 	Cola<Paciente*> *cp;
@@ -20,6 +19,7 @@ public:
 	Paciente* obtener();
 	bool isEmpty();
 	void mostrar();
+	int cuantos();
 	~ColaPacientes();
 };
 

@@ -14,6 +14,7 @@ class ListaPacientes {
 private:
 	ListaDPI<Paciente*> *lPacientes;
 	void mostrarR(ListaDPI<Paciente*> *l);
+	int NumPacientesR(ListaDPI<Paciente*> *l);
 
 public:
 	ListaPacientes();
@@ -22,7 +23,7 @@ public:
 	Paciente* buscarPaciente(string DNI);
 	Paciente* obtenerPrimerPaciente();
 	bool isEmpty();
-	int NumPacientes();
+	int NumPacientesR();
 	void mostrarR();
 	~ListaPacientes();
 };

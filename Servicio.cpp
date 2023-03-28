@@ -21,12 +21,16 @@ Servicio::Servicio(string especialidad) {
 	this->especialidad = especialidad;
 }
 
+string Servicio::getEspecialidad() {
+	return this->especialidad;
+}
+
 void Servicio::insertar(int prioridad, Paciente *p) {
-	this->colaPP[prioridad]->insertar(p);
+	this->colaPP[prioridad - 1]->insertar(p);
 }
 
 bool Servicio::estaVaciaPrioridad(int prioridad) {
-	return this->colaPP[prioridad]->isEmpty();
+	return this->colaPP[prioridad - 1]->isEmpty();
 }
 
 bool Servicio::estaVacia() {
@@ -42,7 +46,7 @@ bool Servicio::estaVacia() {
 }
 
 void Servicio::mostrarPrioridad(int prioridad) {
-	this->colaPP[prioridad]->mostrar();
+	this->colaPP[prioridad - 1]->mostrar();
 }
 
 void Servicio::mostrar() {
@@ -51,11 +55,15 @@ void Servicio::mostrar() {
 	}
 }
 
+int Servicio::numPacientes(int prioridad) {
+	return colaPP[prioridad - 1]->cuantos();
+}
+
 Servicio::~Servicio() {
-	// TODO Auto-generated destructor stub
+// TODO Auto-generated destructor stub
 	int i = 0;
 	while (!this->colaPP[i]->isEmpty()) {
-//		this->colaPP[i]->~ColaPacientes();
+		delete this->colaPP[i];
 	}
 }
 

@@ -23,7 +23,9 @@ private:
 public:
 	Informe();
 	Informe(string informe, const FechaYHora &fyh, Medico *m);
+
 	Medico* obtenerMedicoInf();
+
 	void mostrar();
 	~Informe();
 };

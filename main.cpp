@@ -50,11 +50,11 @@ void cargarPacientes(Servicio *&ser) {
 
 }
 
-int main() {
-	srand(time(NULL));
-	Servicio *ser = new Servicio("Traumatología");
-	cargarPacientes(ser); // SOLO PARA PROBAR CARGO DESDE AQUI
-	ser->mostrarPrioridad(1);
-	delete ser;
-	return 0;
-}
+//int main() {
+//	srand(1992);
+//	Servicio *ser = new Servicio("Traumatología");
+//	cargarPacientes(ser); // SOLO PARA PROBAR CARGO DESDE AQUI
+//	ser->mostrarPrioridad(1);
+//	delete ser;
+//	return 0;
+//}

@@ -14,15 +14,21 @@ class ListaMedicos {
 private:
 	ListaDPI<Medico*> *lMedicos;
 	void mostrarR(ListaDPI<Medico*> *l);
+	int NumMedicosR(ListaDPI<Medico*> *l);
 
 public:
 	ListaMedicos();
+
 	void insertar(Medico *m);
 	bool existe(string apellidos);
+	bool existeEspecialidad(string especialidad);
+
 	Medico* buscarMedico(string apellidos);
+	Medico* buscarMedicoEspecialidad(string especialidad);
 	Medico* obtenerPrimerMedico();
+
 	bool isEmpty();
-	int NumMedico();
+	int NumMedicosR();
 	void mostrarR();
 	~ListaMedicos();
 };

@@ -8,33 +8,34 @@
 #ifndef HOSPITAL_H_
 #define HOSPITAL_H_
 
-#include "GenericVov.h"
-#include "Consulta.h"
 #include "Paciente.h"
 #include "Medico.h"
+#include "Informe.h"
 #include "ListaPacientes.h"
 #include "ListaMedicos.h"
+#include "Servicio.h"
 
 class Hospital {
 private:
 	string nombre;
 	ListaPacientes *lP;
 	ListaMedicos *lM;
+	Servicio *sv;
 
 	// PRE: ---
-	// DES: carga desde un fichero todos los pacientes en VOV_Pacientes
+	// DES: carga desde un fichero todos los pacientes en la lista de pacientes
 	// COM: O(n)
 	void cargarPaciente();
 
 	// PRE: ---
-	// DES: carga desde un fichero todos los medicos en VOV_Medicos
+	// DES: carga desde un fichero todos los medicos en la lista de medicos
 	// COM: O(n)
 	void cargarMedicos();
 
 	// PRE: ---
-	// DES: carga desde un fichero todas las consultas en VOV_Consultas
+	// DES: carga desde un fichero todos los informes en la lista de informes
 	// COM: O(n)
-	void cargarConsulta();
+	void cargarInformes();
 
 public:
 
@@ -46,12 +47,17 @@ public:
 	// PRE: ---
 	// DES: Constructor por defecto
 	// COM: O(1)
-	Hospital(string nombre);
+	Hospital(string nombre, string nomServicio);
 
 	// PRE: ---
 	// DES: devuelve this->nombre
 	// COM: O(1)
 	string getNombre();
+
+	// PRE: ---
+	// DES: devuelve this->sv
+	// COM: O(1)
+	Servicio* getServicio();
 
 	// PRE: ---
 	// DES: muestra por consola todos los pacientes
@@ -66,7 +72,7 @@ public:
 	// PRE: ---
 	// DES: muestra por consola todas las consultas
 	// COM: O(n)
-	void mostrarConsultas();
+	void mostrarPacientesEspera();
 
 	// PRE: ---
 	// DES: muestra por consola el nº total de pacientes, medicos y consultas
@@ -83,10 +89,12 @@ public:
 	// COM: O(n)
 	Medico* buscarMedico(string apellidos);
 
+	Medico* buscarMedicoEspecialidad(string especialidad);
+
 	// PRE: que exista alguna consulta con ese DNI de paciente
 	// DES: devuelve la consulta con el DNI de paciente facilitado
 	// COM: O(n)
-	Consulta* buscarConsulta(string DNI);
+//	Informe* buscarInforme(string DNI);
 
 	// PRE: ---
 	// DES: crea un fichero de texto con la informacion de un paciente con el DNI facilitado

@@ -7,9 +7,9 @@
 
 #include "Hospital.h"
 #include "Paciente.h"
-#include "Consulta.h"
 #include "Medico.h"
 #include "FechaYHora.h"
+#include "Servicio.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -18,56 +18,74 @@ using namespace std;
 
 Hospital::Hospital() {
 	this->nombre = "";
-	ListaPacientes *lP = new ListaPacientes();
-	ListaMedicos *lM = new ListaMedicos();
+	this->sv = new Servicio("");
+	this->lP = new ListaPacientes();
+	this->lM = new ListaMedicos();
 	this->cargarPaciente();
 	this->cargarMedicos();
-	this->cargarConsulta();
+	this->cargarInformes();
 }
 
-Hospital::Hospital(string nombre) {
+Hospital::Hospital(string nombre, string nomServicio) {
 	this->nombre = nombre;
-	ListaPacientes *lP = new ListaPacientes();
-	ListaMedicos *lM = new ListaMedicos();
+	this->sv = new Servicio(nomServicio);
+	this->lP = new ListaPacientes();
+	this->lM = new ListaMedicos();
 	this->cargarPaciente();
 	this->cargarMedicos();
-	this->cargarConsulta();
+	this->cargarInformes();
 }
 
 string Hospital::getNombre() {
 	return this->nombre;
 }
 
+Servicio* Hospital::getServicio() {
+	return this->sv;
+}
+
 void Hospital::mostrarPacientes() {
 	this->lP->mostrarR();
 }
 
-void Hospital::mostrarConsultas() {
-
+void Hospital::mostrarPacientesEspera() {
+	for (int i = 1; i <= MAX_PRIORIDAD; ++i) {
+		cout << "-------------------------------- Prioridad " << i
+				<< " --------------------------------" << endl;
+		this->sv->mostrarPrioridad(i);
+	}
 }
 
 void Hospital::mostrarMedicos() {
-
+	this->lM->mostrarR();
 }
 
 void Hospital::mostrarEstadisticas() {
+	cout << this->lP->NumPacientesR() << " Pacientes" << endl;
+	cout << this->lM->NumMedicosR() << " Medicos" << endl;
+	for (int i = 1; i <= MAX_PRIORIDAD; ++i) {
+		cout << this->sv->numPacientes(i) << " pacientes con prioridad " << i
+				<< endl;
+	}
 }
 
-Paciente* Hospital::buscarPaciente(string dni) {
-
+Paciente* Hospital::buscarPaciente(string DNI) {
+	Paciente *p = this->lP->buscarPaciente(DNI);
+	return p;
 }
 
 Medico* Hospital::buscarMedico(string apellidos) {
-
+	Medico *m = this->lM->buscarMedico(apellidos);
+	return m;
 }
 
-Consulta* Hospital::buscarConsulta(string DNI) {
-
+Medico* Hospital::buscarMedicoEspecialidad(string especialidad) {
+	Medico *m = this->lM->buscarMedicoEspecialidad(especialidad);
+	return m;
 }
 
 void Hospital::cargarPaciente() {
 	ifstream ifs;
-//	int genero, edad;
 	Paciente *p = nullptr;
 	ifs.open("pacientes.csv");
 	if (ifs.fail()) {
@@ -85,49 +103,12 @@ void Hospital::cargarPaciente() {
 				getline(ifs, genero, ';');
 				string edad;
 				getline(ifs, edad, '\n');
-
-//				edad = stoi(edadString);
-//				genero = stoi(generoString);
-//				Genero generoGen = Genero(stoi(genero));
-
 				p = new Paciente(nombre, apellidos, DNI, Genero(stoi(genero)),
 						stoi(edad));
-				this->lP->insertar(p);
-			}
-		}
-		ifs.close();
-	}
-}
+				int prioridad = 1 + rand() % 5;
+				sv->insertar(prioridad, p);
 
-void Hospital::cargarConsulta() {
-	ifstream ifs;
-	Paciente *p = nullptr;
-	Medico *m = nullptr;
-	Consulta *c = nullptr;
-	FechaYHora fyh;
-	string DNI, apellidos, fecha, tipoConsultaString;
-	int tipoInt;
-	ifs.open("consultas.csv");
-	if (ifs.fail()) {
-		cerr << "ERROR: fichero no encontrado." << endl;
-	} else {
-		while (!ifs.eof()) {
-			getline(ifs, DNI, ';');
-			if (!ifs.eof()) {
-				getline(ifs, apellidos, ';');
-				getline(ifs, tipoConsultaString, ';');
-				getline(ifs, fecha, '\n');
-				tipoInt = stoi(tipoConsultaString);
-				TipoConsulta tipoConsultaEnum = TipoConsulta(tipoInt);
-				p = buscarPaciente(DNI);
-				m = buscarMedico(apellidos);
-				if (fecha == "-") {
-					fyh = FechaYHora();
-				} else {
-					fyh = FechaYHora(fecha);
-				}
-				c = new Consulta(p, m, tipoConsultaEnum, fyh);
-//				this->VOV_Consultas->insertarElemento(c);
+				this->lP->insertar(p);
 			}
 		}
 		ifs.close();
@@ -155,16 +136,45 @@ void Hospital::cargarMedicos() {
 	}
 }
 
-void Hospital::almacenarPaciente(string DNI) {
+void Hospital::cargarInformes() {
+	Informe *inf;
+	Medico *m;
+	Paciente *p;
+	string DNI, texto, apellidos, fecha;
+	ifstream ifs("informes.csv");
+	if (ifs.fail()) {
+		cerr << "ERROR: fichero no encontrado." << endl;
+	} else {
+		while (!ifs.eof()) {
+			getline(ifs, DNI, ';');
+			if (!ifs.eof()) {
+				getline(ifs, texto, ';');
+				getline(ifs, apellidos, ';');
+				getline(ifs, fecha, '\n');
+				if (this->lM->existe(apellidos)) {
+					m = this->lM->buscarMedico(apellidos);
+					if (this->lP->existe(DNI)) {
+						p = this->lP->buscarPaciente(DNI);
+						FechaYHora fyh(fecha);
+						inf = new Informe(texto, fyh, m);
+						p->aniadirInfor(inf);
+					}
+				}
 
+			}
+		}
+	}
 }
 
 Hospital::~Hospital() {
 	while (!this->lP->isEmpty()) {
 		delete this->lP->obtenerPrimerPaciente();
 	}
+
 	while (!this->lM->isEmpty()) {
 		delete this->lM->obtenerPrimerMedico();
 	}
+
+	delete this->sv;
 }
 

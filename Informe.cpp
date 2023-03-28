@@ -26,9 +26,8 @@ Medico* Informe::obtenerMedicoInf() {
 }
 
 void Informe::mostrar() {
-//	cout
-//			<< "Informe { Informe: " + this->informe + ", Fecha y hora: "
-//					+ this->hora + ", Medico: " + this->m + "}" << endl;
+	cout << "Informe { Informe: " + this->informe << ", Fecha y hora: "
+			<< this->hora.toString() << " " << this->m->toString() << "}";
 }
 
 Informe::~Informe() {

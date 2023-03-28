@@ -24,6 +24,9 @@ private:
 	int edad;
 	InformePacientes *pInformes;
 public:
+	// PRE: ---
+	// DES: Constructor por defecto
+	// COM: O(1)
 	Paciente();
 
 	Paciente(string nombre, string apellidos, string DNI, Genero genero,
@@ -42,9 +45,12 @@ public:
 	string getNombre();
 	string getApellidos();
 	string getDNI();
-	void mostrarInfPac(string apellidosMedico);
 	int getGenero();
 	int getEdad();
+
+	void mostrarInfPac(string apellidosMedico);
+	void mostrarInfPac();
+	void aniadirInfor(Informe *inf);
 
 	bool operator <(const Paciente &paciente);
 	bool operator ==(const Paciente &paciente);

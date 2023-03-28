@@ -75,7 +75,15 @@ int Paciente::getEdad() {
 }
 
 void Paciente::mostrarInfPac(string apellidosMedico) {
-	 this->pInformes->mostrarInfMedico(apellidosMedico);
+	this->pInformes->mostrarInfMedico(apellidosMedico);
+}
+
+void Paciente::mostrarInfPac() {
+	this->pInformes->mostrar();
+}
+
+void Paciente::aniadirInfor(Informe *inf) {
+	this->pInformes->anadir(inf);
 }
 
 bool Paciente::operator <(const Paciente &paciente) {
@@ -92,7 +100,7 @@ bool Paciente::operator >(const Paciente &paciente) {
 
 void Paciente::mostrar() {
 	cout << "Paciente{ Nombre: " << nombre << ", Apellidos: " << apellidos
-			<< ", DNI: " << DNI << ", Genero: " << genero << "}" << endl;
+			<< ", DNI: " << DNI << ", Genero: " << genero << "}";
 
 }
 

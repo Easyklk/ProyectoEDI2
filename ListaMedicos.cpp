@@ -25,6 +25,7 @@ void ListaMedicos::insertar(Medico *m) {
 
 bool ListaMedicos::existe(string apellidos) {
 	bool enc = false;
+	this->lMedicos->moverPrimero();
 	if (!this->lMedicos->estaVacia()) {
 		while (!this->lMedicos->alFinal() && !enc) {
 			if (this->lMedicos->consultar()->getApellidos() == apellidos)
@@ -36,8 +37,23 @@ bool ListaMedicos::existe(string apellidos) {
 	return enc;
 }
 
+bool ListaMedicos::existeEspecialidad(string especialidad) {
+	bool enc = false;
+	this->lMedicos->moverPrimero();
+	if (!this->lMedicos->estaVacia()) {
+		while (!this->lMedicos->alFinal() && !enc) {
+			if (this->lMedicos->consultar()->getApellidos() == especialidad)
+				enc = true;
+			else
+				this->lMedicos->avanzar();
+		}
+	}
+	return enc;
+}
+
 Medico* ListaMedicos::buscarMedico(string apellidos) {
 	Medico *m = nullptr;
+	this->lMedicos->moverPrimero();
 	if (!this->lMedicos->estaVacia()) {
 		if (existe(apellidos)) {
 			m = lMedicos->consultar();
@@ -46,10 +62,20 @@ Medico* ListaMedicos::buscarMedico(string apellidos) {
 	return m;
 }
 
-Medico* ListaMedicos::obtenerPrimerMedico() {
+Medico* ListaMedicos::buscarMedicoEspecialidad(string especialidad) {
 	Medico *m = nullptr;
 	this->lMedicos->moverPrimero();
-	m = this->lMedicos->consultar();
+	if (!this->lMedicos->estaVacia()) {
+		if (existeEspecialidad(especialidad)) {
+			m = lMedicos->consultar();
+		}
+	}
+	return m;
+}
+
+Medico* ListaMedicos::obtenerPrimerMedico() {
+	this->lMedicos->moverPrimero();
+	Medico *m = this->lMedicos->consultar();
 	this->lMedicos->eliminar();
 	return m;
 }
@@ -58,16 +84,23 @@ bool ListaMedicos::isEmpty() {
 	return this->lMedicos->estaVacia();
 }
 
-int ListaMedicos::NumMedico() {
-	int total = 0;
-	if (!this->lMedicos->estaVacia()) {
-		if (!this->lMedicos->alFinal()) {
-			total++;
-			this->lMedicos->avanzar();
-			NumMedico();
+int ListaMedicos::NumMedicosR(ListaDPI<Medico*> *l) {
+	int totalMedicos = 0;
+	if (!l->estaVacia()) {
+		if (!l->alFinal()) {
+			totalMedicos++;
+			l->avanzar();
+			totalMedicos += NumMedicosR(l);
 		}
 	}
-	return total;
+	return totalMedicos;
+}
+
+int ListaMedicos::NumMedicosR() {
+	int cuenta;
+	this->lMedicos->moverPrimero();
+	cuenta = NumMedicosR(this->lMedicos);
+	return cuenta;
 }
 
 void ListaMedicos::mostrarR(ListaDPI<Medico*> *l) {

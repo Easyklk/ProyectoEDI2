@@ -52,6 +52,11 @@ void Medico::mostrar() {
 			<< ", Especialidad: " << especialidad << "}" << endl;
 }
 
+string Medico::toString() {
+	return ("Medico{ Nombre: " + nombre + ", Apellidos: " + apellidos
+			+ ", Especialidad: " + especialidad + " }");
+}
+
 bool Medico::operator <(const Medico &medico) {
 	return (this->apellidos < medico.apellidos);
 }

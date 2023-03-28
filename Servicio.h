@@ -21,11 +21,15 @@ private:
 public:
 	Servicio();
 	Servicio(string especialidad);
+
+	string getEspecialidad();
+
 	void insertar(int prioridad, Paciente *p);
 	bool estaVaciaPrioridad(int prioridad);
 	bool estaVacia();
 	void mostrarPrioridad(int prioridad);
 	void mostrar();
+	int numPacientes(int prioridad);
 	~Servicio();
 };
 

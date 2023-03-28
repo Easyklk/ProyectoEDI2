@@ -17,7 +17,9 @@ void ColaPacientes::insertar(Paciente *p) {
 
 Paciente* ColaPacientes::obtener() {
 	//PDF Cito textualmente: 3. Obtener el primer paciente de la cola y eliminarlo.
-	return this->cp->getPrimero();
+	Paciente *p = this->cp->getPrimero();
+	this->cp->desencolar();
+	return p;
 }
 
 bool ColaPacientes::isEmpty() {
@@ -42,6 +44,26 @@ void ColaPacientes::mostrar() {
 	delete aux;
 }
 
+int ColaPacientes::cuantos() {
+	int total = 0;
+	Cola<Paciente*> *aux = new Cola<Paciente*>();
+	Paciente *p = nullptr;
+	while (!this->cp->estaVacia()) {
+		p = this->cp->getPrimero();
+		aux->encolar(p);
+		this->cp->desencolar();
+		total++;
+	}
+
+	while (!aux->estaVacia()) {
+		p = aux->getPrimero();
+		this->cp->encolar(p);
+		aux->desencolar();
+	}
+	delete aux;
+	return total;
+
+}
 ColaPacientes::~ColaPacientes() {
 	// TODO Auto-generated destructor stub
 	delete this->cp;

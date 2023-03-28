@@ -8,12 +8,11 @@
 #include "InformePacientes.h"
 
 InformePacientes::InformePacientes() {
-	// TODO Auto-generated constructor stub
 	this->ptrInf = new Pila<Informe*>;
-
 }
 
 void InformePacientes::anadir(Informe *inf) {
+	this->ptrInf->apilar(inf);
 }
 
 void InformePacientes::mostrarR(Pila<Informe*> *ptrInf) {
@@ -38,7 +37,8 @@ void InformePacientes::mostrar() {
 		inf = this->ptrInf->getCima();
 		aux->apilar(inf);
 		this->ptrInf->desapilar();
-		cout << inf << " ";
+		inf->mostrar();
+		cout << " ";
 	}
 	cout << endl;
 	while (!aux->estaVacia()) {
@@ -50,22 +50,24 @@ void InformePacientes::mostrar() {
 }
 
 void InformePacientes::mostrarInfMedico(string apellidos) {
-//	Pila<Informe*> *aux = new Pila<Informe*>();
-//	Informe *inf = nullptr;
-//	Medico *m = nullptr;
-//	while (!this->ptrInf->estaVacia()) {
-//		inf = this->ptrInf->getCima();
-//		aux->apilar(inf);
-//		this->ptrInf->desapilar();
-//		cout << inf << " ";
-//	}
-//	cout << endl;
-//	while (!aux->estaVacia()) {
-//		inf = aux->getCima();
-//		this->ptrInf->apilar(inf);
-//		aux->desapilar();
-//	}
-//	delete aux;
+	Pila<Informe*> *aux = new Pila<Informe*>();
+	Informe *inf = nullptr;
+	while (!this->ptrInf->estaVacia()) {
+		inf = this->ptrInf->getCima();
+		aux->apilar(inf);
+		if (inf->obtenerMedicoInf()->getApellidos() == apellidos) {
+			inf->mostrar();
+			cout << " ";
+		}
+		this->ptrInf->desapilar();
+	}
+	cout << endl;
+	while (!aux->estaVacia()) {
+		inf = aux->getCima();
+		this->ptrInf->apilar(inf);
+		aux->desapilar();
+	}
+	delete aux;
 }
 
 InformePacientes::~InformePacientes() {
