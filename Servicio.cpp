@@ -44,10 +44,6 @@ Paciente* Servicio::obtenerPrimerPaciente(int prioridad) {
 
 }
 
-void Servicio::eliminarPrimerPaciente(int prioridad) {
-	this->colaPP[prioridad - 1]->eliminar();
-}
-
 bool Servicio::estaVaciaPrioridad(int prioridad) {
 	return this->colaPP[prioridad - 1]->isEmpty();
 }

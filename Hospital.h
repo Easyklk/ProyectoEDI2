@@ -33,7 +33,7 @@ private:
 	void cargarMedicos();
 
 	// PRE: ---
-	// DES: carga desde un fichero todos los informes en la lista de informes
+	// DES: carga desde un fichero todos los informes en su respectivo paciente
 	// COM: O(n)
 	void cargarInformes();
 
@@ -59,48 +59,49 @@ public:
 	// COM: O(1)
 	Servicio* getServicio();
 
+	// PRE: ---
+	// DES: devuelve la fecha y hora del sistema
+	// COM: O(1)
 	string obtenerFechaHora();
 
 	// PRE: ---
 	// DES: muestra por consola todos los pacientes
-	// COM: O(n)
+	// COM: O(1)
 	void mostrarPacientes();
 
 	// PRE: ---
 	// DES: muestra por consola todos los medicos
-	// COM: O(n)
+	// COM: O(1)
 	void mostrarMedicos();
 
 	// PRE: ---
-	// DES: muestra por consola todas las consultas
+	// DES: muestra por consola todos los pacientes en espera
 	// COM: O(n)
 	void mostrarPacientesEspera();
 
 	// PRE: ---
-	// DES: muestra por consola el nº total de pacientes, medicos y consultas
+	// DES: muestra por consola el nº total de pacientes, medicos y pacientes en espera
 	// COM: O(n)
 	void mostrarEstadisticas();
 
 	// PRE: que exista un paciente con ese DNI
 	// DES: devuelve el paciente con el DNI facilitado
-	// COM: O(n)
+	// COM: O(1)
 	Paciente* buscarPaciente(string DNI);
 
 	// PRE: que exista un medico con ese apellido
 	// DES: devuelve el Medico con el apellido facilitado
-	// COM: O(n)
+	// COM: O(1)
 	Medico* buscarMedico(string apellidos);
 
+	// PRE: que exista un medico con esa especialidad
+	// DES: devuelve el Medico con la especialidad facilitada
+	// COM: O(1)
 	Medico* buscarMedicoEspecialidad(string especialidad);
 
-	// PRE: que exista alguna consulta con ese DNI de paciente
-	// DES: devuelve la consulta con el DNI de paciente facilitado
-	// COM: O(n)
-//	Informe* buscarInforme(string DNI);
-
 	// PRE: ---
-	// DES: crea un informe para un paciente
-	// COM: O(n)
+	// DES: crea un informe para todos los pacientes en espera
+	// COM: O(n^2)
 	void generarInforme();
 
 	// PRE: ---

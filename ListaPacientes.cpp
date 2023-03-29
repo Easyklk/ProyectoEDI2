@@ -81,8 +81,8 @@ int ListaPacientes::NumPacientesR() {
 void ListaPacientes::mostrarR(ListaDPI<Paciente*> *l) {
 	if (!l->alFinal()) {
 		l->consultar()->mostrar();
-		cout << " ";
 		l->avanzar();
+		cout << endl;
 		mostrarR(l);
 	}
 }

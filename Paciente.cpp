@@ -74,10 +74,6 @@ int Paciente::getEdad() {
 	return this->edad;
 }
 
-void Paciente::mostrarInfPac(string apellidosMedico) {
-	this->pInformes->mostrarInfMedico(apellidosMedico);
-}
-
 void Paciente::mostrarInfPac() {
 	this->pInformes->mostrar();
 }
@@ -102,6 +98,20 @@ void Paciente::mostrar() {
 	cout << "Paciente{ Nombre: " << nombre << ", Apellidos: " << apellidos
 			<< ", DNI: " << DNI << ", Genero: " << genero << "}";
 
+}
+
+string Paciente::toString() {
+	string generoString = "";
+	if (this->genero == 0) {
+		generoString = "Masculino";
+	} else if (this->genero == 1) {
+		generoString = "Femenino";
+	} else {
+		generoString = "Indefinido";
+	}
+	return ("Paciente{ Nombre: " + this->nombre + ", Apellidos: "
+			+ this->apellidos + ", DNI: " + to_string(edad) + ", Genero: "
+			+ generoString) + " }";
 }
 
 Paciente::~Paciente() {

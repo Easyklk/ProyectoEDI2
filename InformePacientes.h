@@ -22,7 +22,6 @@ public:
 	void anadir(Informe *inf);
 	void mostrar();
 	void mostrarR();
-	void mostrarInfMedico(string apellidos);
 	~InformePacientes();
 };
 

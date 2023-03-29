@@ -106,7 +106,6 @@ int ListaMedicos::NumMedicosR() {
 void ListaMedicos::mostrarR(ListaDPI<Medico*> *l) {
 	if (!l->alFinal()) {
 		l->consultar()->mostrar();
-		cout << " ";
 		l->avanzar();
 		mostrarR(l);
 	}

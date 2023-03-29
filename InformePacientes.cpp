@@ -48,27 +48,6 @@ void InformePacientes::mostrar() {
 	delete aux;
 }
 
-void InformePacientes::mostrarInfMedico(string apellidos) {
-	Pila<Informe*> *aux = new Pila<Informe*>();
-	Informe *inf = nullptr;
-	while (!this->ptrInf->estaVacia()) {
-		inf = this->ptrInf->getCima();
-		aux->apilar(inf);
-		if (inf->obtenerMedicoInf()->getApellidos() == apellidos) {
-			inf->mostrar();
-			cout << " ";
-		}
-		this->ptrInf->desapilar();
-	}
-	cout << endl;
-	while (!aux->estaVacia()) {
-		inf = aux->getCima();
-		this->ptrInf->apilar(inf);
-		aux->desapilar();
-	}
-	delete aux;
-}
-
 InformePacientes::~InformePacientes() {
 // TODO Auto-generated destructor stub
 	delete this->ptrInf;

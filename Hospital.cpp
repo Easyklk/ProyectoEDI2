@@ -62,10 +62,12 @@ void Hospital::mostrarPacientes() {
 
 void Hospital::mostrarPacientesEspera() {
 	for (int i = 1; i <= MAX_PRIORIDAD; ++i) {
-		cout << "-------------------------------- Prioridad " << i
-				<< " --------------------------------" << endl;
-		this->sv->mostrarPrioridad(i);
-		cout << endl;
+		if (!this->sv->estaVaciaPrioridad(i)) {
+			cout << "-------------------------------- Prioridad " << i
+					<< " --------------------------------" << endl;
+			this->sv->mostrarPrioridad(i);
+			cout << endl;
+		}
 	}
 }
 
@@ -184,16 +186,19 @@ void Hospital::generarInforme() {
 	Informe *inf;
 	Paciente *p;
 	Medico *m = this->sv->getMedico();
-	for (int i = 1; i <= this->lP->NumPacientesR(); ++i) {
-		p = this->sv->obtenerPrimerPaciente(i);
-		inf = new Informe("Texto Informe", FechaYHora(this->obtenerFechaHora()),
-				m);
-		p->aniadirInfor(inf);
-		p->mostrar();
-		cout << endl;
-		p->mostrarInfPac();
-		cout << endl;
-		this->sv->eliminarPrimerPaciente(i);
+	for (int i = 1; i <= MAX_PRIORIDAD; ++i) {
+		cout << "-------------------------------- Prioridad " << i
+				<< " --------------------------------" << endl;
+		while (!this->sv->estaVaciaPrioridad(i)) {
+			p = this->sv->obtenerPrimerPaciente(i);
+			inf = new Informe("Texto de Ejemplo",
+					FechaYHora(this->obtenerFechaHora()), m);
+			p->aniadirInfor(inf);
+			p->mostrar();
+			cout << endl;
+			p->mostrarInfPac();
+			cout << endl;
+		}
 	}
 }
 

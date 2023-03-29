@@ -21,12 +21,29 @@ private:
 	FechaYHora hora;
 	Medico *m;
 public:
+	// PRE: ---
+	// DES: Constructor por defecto
+	// COM: O(1)
 	Informe();
+
+	// PRE: ---
+	// DES: Constructor parametrizado
+	// COM: O(1)
 	Informe(string informe, const FechaYHora &fyh, Medico *m);
 
+	// PRE: ---
+	// DES: Devuelve el medico del informe
+	// COM: O(1)
 	Medico* obtenerMedicoInf();
 
+	// PRE: ---
+	// DES: muestra por consola todos los atributos del informe
+	// COM: O(1)
 	void mostrar();
+
+	// PRE: ---
+	// DES: Destructor
+	// COM: O(1)
 	~Informe();
 };
 

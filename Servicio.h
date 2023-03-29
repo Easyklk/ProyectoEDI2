@@ -29,7 +29,6 @@ public:
 
 	void insertar(int prioridad, Paciente *p);
 	Paciente* obtenerPrimerPaciente(int prioridad);
-	void eliminarPrimerPaciente(int prioridad);
 
 	bool estaVaciaPrioridad(int prioridad);
 	bool estaVacia();

@@ -25,7 +25,7 @@ int menu(string nombre) {
 		cout << "     4. Mostrar Pacientes Espera			" << endl;
 		cout << "     5. Buscar Paciente                    " << endl;
 		cout << "     6. Buscar Medico                      " << endl;
-		cout << "     7. Asignar Medico a Servicio			" << endl;
+		cout << "     7. Asignar Medico						" << endl;
 		cout << "     8. Procesar las colas de espera		" << endl;
 
 		cout << "     0. Finalizar.                         " << endl;
@@ -48,8 +48,6 @@ int main() {
 	bool salir = false;
 	int opcion;
 	string DNI, apellido;
-
-	srand(1992);
 
 	hospital = new Hospital("Hospital Uex", "Hematología");
 
@@ -82,7 +80,7 @@ int main() {
 				cout << endl;
 				p->mostrarInfPac();
 			} else
-				cerr << " No hay ningun paciente asociado a ese DNI" << endl;
+				cerr << " No hay ningun paciente con a ese DNI" << endl;
 			break;
 
 		case 6:
@@ -110,9 +108,7 @@ int main() {
 				cerr << " No hay ningun medico asignado" << endl;
 
 			break;
-		case 9:
-//			hospital->
-			break;
+
 		case 0:
 			salir = true;
 			break;
@@ -124,7 +120,6 @@ int main() {
 
 	}
 
-	// 3. Elimina hospital (los datos se almacenan automáticamente).
 	delete hospital;
 
 	return 0;
