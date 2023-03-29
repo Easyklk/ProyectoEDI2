@@ -18,13 +18,19 @@ class Servicio {
 private:
 	string especialidad;
 	ColaPacientes *colaPP[MAX_PRIORIDAD];
+	Medico *m;
 public:
 	Servicio();
 	Servicio(string especialidad);
 
 	string getEspecialidad();
+	void setMedico(Medico *m);
+	Medico* getMedico();
 
 	void insertar(int prioridad, Paciente *p);
+	Paciente* obtenerPrimerPaciente(int prioridad);
+	void eliminarPrimerPaciente(int prioridad);
+
 	bool estaVaciaPrioridad(int prioridad);
 	bool estaVacia();
 	void mostrarPrioridad(int prioridad);

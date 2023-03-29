@@ -48,7 +48,7 @@ Paciente* ListaPacientes::buscarPaciente(string DNI) {
 	return p;
 }
 
-Paciente* ListaPacientes::obtenerPrimerPaciente() {
+Paciente* ListaPacientes::eliminarPrimerPaciente() {
 	this->lPacientes->moverPrimero();
 	Paciente *p = this->lPacientes->consultar();
 	this->lPacientes->eliminar();

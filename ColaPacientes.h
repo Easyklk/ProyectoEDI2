@@ -15,11 +15,14 @@ private:
 	Cola<Paciente*> *cp;
 public:
 	ColaPacientes();
+
 	void insertar(Paciente *p);
 	Paciente* obtener();
+	void eliminar();
 	bool isEmpty();
 	void mostrar();
 	int cuantos();
+
 	~ColaPacientes();
 };
 

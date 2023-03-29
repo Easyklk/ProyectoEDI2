@@ -38,9 +38,8 @@ void InformePacientes::mostrar() {
 		aux->apilar(inf);
 		this->ptrInf->desapilar();
 		inf->mostrar();
-		cout << " ";
+		cout << endl;
 	}
-	cout << endl;
 	while (!aux->estaVacia()) {
 		inf = aux->getCima();
 		this->ptrInf->apilar(inf);

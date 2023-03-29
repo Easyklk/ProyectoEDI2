@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -44,6 +45,17 @@ Servicio* Hospital::getServicio() {
 	return this->sv;
 }
 
+string Hospital::obtenerFechaHora() {
+	time_t t = std::time(nullptr);
+	tm *now = std::localtime(&t);
+
+	char buffer[128];
+	string data;
+	strftime(buffer, sizeof(buffer), "%d/%m/%Y %X", now);
+	return buffer;
+
+}
+
 void Hospital::mostrarPacientes() {
 	this->lP->mostrarR();
 }
@@ -53,6 +65,7 @@ void Hospital::mostrarPacientesEspera() {
 		cout << "-------------------------------- Prioridad " << i
 				<< " --------------------------------" << endl;
 		this->sv->mostrarPrioridad(i);
+		cout << endl;
 	}
 }
 
@@ -166,9 +179,27 @@ void Hospital::cargarInformes() {
 	}
 }
 
+void Hospital::generarInforme() {
+	ofstream ofs;
+	Informe *inf;
+	Paciente *p;
+	Medico *m = this->sv->getMedico();
+	for (int i = 1; i <= this->lP->NumPacientesR(); ++i) {
+		p = this->sv->obtenerPrimerPaciente(i);
+		inf = new Informe("Texto Informe", FechaYHora(this->obtenerFechaHora()),
+				m);
+		p->aniadirInfor(inf);
+		p->mostrar();
+		cout << endl;
+		p->mostrarInfPac();
+		cout << endl;
+		this->sv->eliminarPrimerPaciente(i);
+	}
+}
+
 Hospital::~Hospital() {
 	while (!this->lP->isEmpty()) {
-		delete this->lP->obtenerPrimerPaciente();
+		delete this->lP->eliminarPrimerPaciente();
 	}
 
 	while (!this->lM->isEmpty()) {

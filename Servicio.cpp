@@ -12,6 +12,7 @@ Servicio::Servicio() {
 		this->colaPP[i] = new ColaPacientes();
 	}
 	this->especialidad = "";
+	this->m = nullptr;
 }
 
 Servicio::Servicio(string especialidad) {
@@ -19,14 +20,32 @@ Servicio::Servicio(string especialidad) {
 		this->colaPP[i] = new ColaPacientes();
 	}
 	this->especialidad = especialidad;
+	this->m = nullptr;
 }
 
 string Servicio::getEspecialidad() {
 	return this->especialidad;
 }
 
+void Servicio::setMedico(Medico *m) {
+	this->m = m;
+}
+
+Medico* Servicio::getMedico() {
+	return this->m;
+}
+
 void Servicio::insertar(int prioridad, Paciente *p) {
 	this->colaPP[prioridad - 1]->insertar(p);
+}
+
+Paciente* Servicio::obtenerPrimerPaciente(int prioridad) {
+	return this->colaPP[prioridad - 1]->obtener();
+
+}
+
+void Servicio::eliminarPrimerPaciente(int prioridad) {
+	this->colaPP[prioridad - 1]->eliminar();
 }
 
 bool Servicio::estaVaciaPrioridad(int prioridad) {

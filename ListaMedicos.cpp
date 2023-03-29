@@ -42,7 +42,7 @@ bool ListaMedicos::existeEspecialidad(string especialidad) {
 	this->lMedicos->moverPrimero();
 	if (!this->lMedicos->estaVacia()) {
 		while (!this->lMedicos->alFinal() && !enc) {
-			if (this->lMedicos->consultar()->getApellidos() == especialidad)
+			if (this->lMedicos->consultar()->getEspecialidad() == especialidad)
 				enc = true;
 			else
 				this->lMedicos->avanzar();

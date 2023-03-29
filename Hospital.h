@@ -59,6 +59,8 @@ public:
 	// COM: O(1)
 	Servicio* getServicio();
 
+	string obtenerFechaHora();
+
 	// PRE: ---
 	// DES: muestra por consola todos los pacientes
 	// COM: O(n)
@@ -97,9 +99,9 @@ public:
 //	Informe* buscarInforme(string DNI);
 
 	// PRE: ---
-	// DES: crea un fichero de texto con la informacion de un paciente con el DNI facilitado
+	// DES: crea un informe para un paciente
 	// COM: O(n)
-	void almacenarPaciente(string DNI);
+	void generarInforme();
 
 	// PRE: ---
 	// DES: Destructor

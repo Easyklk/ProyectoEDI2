@@ -51,7 +51,7 @@ int main() {
 
 	srand(1992);
 
-	hospital = new Hospital("Hospital Uex", "Traumatología");
+	hospital = new Hospital("Hospital Uex", "Hematología");
 
 	while (!salir) {
 		opcion = menu(hospital->getNombre());
@@ -96,23 +96,23 @@ int main() {
 			break;
 
 		case 7:
-			cout << "Introduzca el apellido del medico a asignar: ";
-			cin >> apellido;
-			hospital->buscarPaciente(apellido);
 			m = hospital->buscarMedicoEspecialidad(
 					hospital->getServicio()->getEspecialidad());
-
-
-			hospital->getServicio()->estaVacia();
-
-
-
+			hospital->getServicio()->setMedico(m);
+			cout << "Medico asignado: ";
+			m->mostrar();
 			break;
 
 		case 8:
+			if (hospital->getServicio()->getMedico() != nullptr) {
+				hospital->generarInforme();
+			} else
+				cerr << " No hay ningun medico asignado" << endl;
 
 			break;
-
+		case 9:
+//			hospital->
+			break;
 		case 0:
 			salir = true;
 			break;

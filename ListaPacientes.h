@@ -21,7 +21,7 @@ public:
 	void insertar(Paciente *p);
 	bool existe(string DNI);
 	Paciente* buscarPaciente(string DNI);
-	Paciente* obtenerPrimerPaciente();
+	Paciente* eliminarPrimerPaciente();
 	bool isEmpty();
 	int NumPacientesR();
 	void mostrarR();

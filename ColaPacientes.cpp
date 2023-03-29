@@ -14,6 +14,9 @@ ColaPacientes::ColaPacientes() {
 void ColaPacientes::insertar(Paciente *p) {
 	this->cp->encolar(p);
 }
+void ColaPacientes::eliminar() {
+	this->cp->desencolar();
+}
 
 Paciente* ColaPacientes::obtener() {
 	//PDF Cito textualmente: 3. Obtener el primer paciente de la cola y eliminarlo.
@@ -34,8 +37,9 @@ void ColaPacientes::mostrar() {
 		aux->encolar(p);
 		this->cp->desencolar();
 		p->mostrar();
+		cout << endl;
+
 	}
-	cout << endl;
 	while (!aux->estaVacia()) {
 		p = aux->getPrimero();
 		this->cp->encolar(p);
