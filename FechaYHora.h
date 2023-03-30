@@ -83,6 +83,9 @@ public:
 	// Desc: Muestra la fecha/hora en pantalla
 	void mostrar() const;
 
+	// Pre   = { }
+	// Compl = O(1)
+	// Desc: Devuelve un string con la fecha/hora
 	string toString();
 };
 

@@ -33,7 +33,7 @@ private:
 	void cargarMedicos();
 
 	// PRE: ---
-	// DES: carga desde un fichero todos los informes en su respectivo paciente
+	// DES: carga desde un fichero el informe en su respectivo paciente
 	// COM: O(n)
 	void cargarInformes();
 
@@ -106,7 +106,7 @@ public:
 
 	// PRE: ---
 	// DES: Destructor
-	// COM: O(1)
+	// COM: O(n)
 	~Hospital();
 
 };

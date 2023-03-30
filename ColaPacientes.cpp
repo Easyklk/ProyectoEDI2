@@ -19,7 +19,6 @@ void ColaPacientes::eliminar() {
 }
 
 Paciente* ColaPacientes::obtener() {
-	//PDF Cito textualmente: 3. Obtener el primer paciente de la cola y eliminarlo.
 	Paciente *p = this->cp->getPrimero();
 	this->cp->desencolar();
 	return p;
@@ -68,6 +67,7 @@ int ColaPacientes::cuantos() {
 	return total;
 
 }
+
 ColaPacientes::~ColaPacientes() {
 	// TODO Auto-generated destructor stub
 	delete this->cp;

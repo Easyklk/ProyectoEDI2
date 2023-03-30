@@ -41,6 +41,8 @@ public:
 	// COM: O(1)
 	void mostrar();
 
+	string toString();
+
 	// PRE: ---
 	// DES: Destructor
 	// COM: O(1)

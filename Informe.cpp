@@ -31,6 +31,10 @@ void Informe::mostrar() {
 			<< "}";
 }
 
+string Informe::toString() {
+	return ("Informe{ Texto: " + this->informe + ", Fecha y hora: "
+			+ this->hora.toString() + " " + this->m->toString() + "}");
+}
 Informe::~Informe() {
 	// TODO Auto-generated destructor stub
 }

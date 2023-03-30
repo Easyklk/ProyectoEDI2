@@ -206,10 +206,12 @@ Hospital::~Hospital() {
 	while (!this->lP->isEmpty()) {
 		delete this->lP->eliminarPrimerPaciente();
 	}
+	delete this->lP;
 
 	while (!this->lM->isEmpty()) {
 		delete this->lM->obtenerPrimerMedico();
 	}
+	delete this->lM;
 
 	delete this->sv;
 }

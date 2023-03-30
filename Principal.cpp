@@ -7,11 +7,17 @@
 
 #include <iostream>
 #include <string>
+#include "PruebasColaPacientes.h"
+#include "PruebasInforme.h"
+#include "PruebasListaPacientes.h"
 
 using namespace std;
-//
-//int main() {
-//
-//	return 0;
-//}
+
+int main() {
+//	pruebasColaPacientes();
+//	pruebasInforme();
+//	pruebasListaPacientes();
+
+	return 0;
+}
 
