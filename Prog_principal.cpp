@@ -49,7 +49,7 @@ int main() {
 	int opcion;
 	string DNI, apellido;
 
-	hospital = new Hospital("Hospital Uex", "Hematología");
+	hospital = new Hospital("Hospital Uex", "Paraparapara");
 
 	while (!salir) {
 		opcion = menu(hospital->getNombre());
@@ -96,9 +96,12 @@ int main() {
 		case 7:
 			m = hospital->buscarMedicoEspecialidad(
 					hospital->getServicio()->getEspecialidad());
-			hospital->getServicio()->setMedico(m);
-			cout << "Medico asignado: ";
-			m->mostrar();
+			if (m != nullptr) {
+				hospital->getServicio()->setMedico(m);
+				cout << "Medico asignado: ";
+				m->mostrar();
+			} else
+				cerr << "No hay ningun medico con esa especialidad" << endl;
 			break;
 
 		case 8:
