@@ -50,15 +50,16 @@ int menu(string nombre) {
 
 // Programa principal:
 int main() {
-//
-//	pruebasMedico();
-//	pruebasPaciente();
-//	pruebasColaPacientes();
-//	pruebasInforme();
-//	pruebasListaPacientes();
-//	pruebasListaMedicos();
-//	pruebasServicio();
-//	pruebasInformePacientes();
+//	-------Pruebas-------
+	pruebasMedico();
+	pruebasPaciente();
+	pruebasColaPacientes();
+	pruebasInforme();
+	pruebasListaPacientes();
+	pruebasListaMedicos();
+	pruebasServicio();
+	pruebasInformePacientes();
+	//	-------Pruebas-------
 
 	Hospital *hospital = nullptr;
 	Paciente *p = nullptr;
