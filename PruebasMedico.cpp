@@ -36,7 +36,7 @@ void probarConstructoresMedico() {
 	m1.setEspecialidad("Ser un matao'");
 	if (m1.getEspecialidad() != "Ser un matao'")
 		cerr << "Error al modificar la especialidad del medico" << endl;
-	cout << "Fin probarConstructoresPersona" << endl;
+	cout << "Fin probarConstructoresMedico" << endl;
 }
 
 void probarToStringMedico() {

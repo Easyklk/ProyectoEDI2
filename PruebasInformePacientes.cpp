@@ -39,11 +39,11 @@ void probarAnadirInformePacientes() {
 	if (iP->contarInf() != 3)
 		cerr << "Error al insertar el informe nº3" << endl;
 
+	cout << "Fin probarAnadirInformePacientes" << endl;
 	delete iP;
 	delete inf1;
 	delete inf2;
 	delete inf3;
-	cout << "Fin probarAnadirInformePacientes" << endl;
 }
 
 void pruebasInformePacientes() {

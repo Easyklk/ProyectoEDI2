@@ -10,7 +10,7 @@
 #include "FechaYHora.h"
 
 void probarConstructorInforme() {
-	cout << "Inicio probarConstructoresGenericVov" << endl;
+	cout << "Inicio probarConstructorInforme" << endl;
 	Informe c;
 	if (c.toString()
 			!= "Informe{ Texto: , Fecha y hora: 0/0/0 0:0 Medico{ Nombre: , Apellidos: , Especialidad:  }}")
@@ -22,7 +22,7 @@ void probarConstructorInforme() {
 			!= "Informe{ Texto: Texto, Fecha y hora: 0/0/0 0:0 Medico{ Nombre: , Apellidos: , Especialidad:  }}")
 		cerr << "Error en el constructor parametrizado" << endl;
 
-	cout << "Fin probarConstructoresGenericVov" << endl;
+	cout << "Fin probarConstructorInforme" << endl;
 }
 
 void probarObtenerMedicoInf() {

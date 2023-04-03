@@ -5,22 +5,28 @@
  *      Author: Isaac Romanillos
  */
 
-#include <iostream>
-#include <string>
+//#include <iostream>
+//#include <string>
 //#include "PruebasColaPacientes.h"
-#include "PruebasInforme.h"
-#include "PruebasListaPacientes.h"
-#include "PruebasListaMedicos.h"
-#include "PruebasServicio.h"
-#include
-using namespace std;
-
-int main() {
+//#include "PruebasMedico.h"
+//#include "PruebasPaciente.h"
+//#include "PruebasInforme.h"
+//#include "PruebasListaPacientes.h"
+//#include "PruebasListaMedicos.h"
+//#include "PruebasServicio.h"
+//#include "PruebasInformePacientes.h"
+//
+//using namespace std;
+//
+//int main() {
+//	pruebasMedico();
+//	pruebasPaciente();
 //	pruebasColaPacientes();
 //	pruebasInforme();
 //	pruebasListaPacientes();
 //	pruebasListaMedicos();
 //	pruebasServicio();
-	return 0;
-}
+//	pruebasInformePacientes();
+//	return 0;
+//}
 

@@ -48,7 +48,7 @@ void probarConstructoresPaciente() {
 	p1.setEdad(22);
 	if (p1.getEdad() != 22)
 		cerr << "Error al modificar la edad del paciente" << endl;
-	cout << "Fin probarConstructoresPersona" << endl;
+	cout << "Fin probarConstructoresPaciente" << endl;
 }
 
 void probarToStringPaciente() {
@@ -63,11 +63,11 @@ void probarToStringPaciente() {
 
 void pruebasPaciente() {
 	cout << "------------------------------------------------------" << endl;
-	cout << "Inicio de las pruebas de la clase Persona" << endl;
+	cout << "Inicio de las pruebas de la clase Paciente" << endl;
 	cout << "------------------------------------------------------" << endl;
 	probarConstructoresPaciente();
 	probarToStringPaciente();
 	cout << "------------------------------------------------------" << endl;
-	cout << "Fin de las pruebas de la clase Persona" << endl;
+	cout << "Fin de las pruebas de la clase Paciente" << endl;
 	cout << "------------------------------------------------------" << endl;
 }
