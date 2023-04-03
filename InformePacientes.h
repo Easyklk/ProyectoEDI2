@@ -39,6 +39,11 @@ public:
 	void mostrar();
 
 	// PRE: ---
+	// DES: devuelve el numero de informes
+	// COM: O(n)
+	int contarInf();
+
+	// PRE: ---
 	// DES: Hace una llamada al metodo privado "mostrarR(Pila<Informe*> *ptrInf *ptrInf)"
 	// COM: O(1)
 	void mostrarR();
