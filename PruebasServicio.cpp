@@ -38,10 +38,9 @@ void probarConstructorServicio() {
 void probarInsertarPacienteServicio() {
 	cout << "Inicio probarInsertarPacienteServicio" << endl;
 	Servicio *sv = new Servicio();
-	Paciente *p = new Paciente("", "", "01010101A", Genero(0), 0);
-	sv->insertar(1, p);
-//	if (sv->estaVaciaPrioridad(1) || sv->estaVacia())
-//		cerr << "Error al insertar Paciente en Servicio" << endl;
+	sv->insertar(2, new Paciente("", "", "01010101B", Genero(0), 0));
+	if (sv->estaVaciaPrioridad(2) || sv->estaVacia())
+		cerr << "Error al insertar Paciente en Servicio" << endl;
 
 	delete sv;
 	cout << "Fin probarInsertarPacienteServicio" << endl;
@@ -65,8 +64,8 @@ void probarEstaVaciaPrioridad() {
 	if (!sv->estaVaciaPrioridad(1))
 		cerr << "Error la cola con prioridad 0 SI deberia estar vacia" << endl;
 
-	sv->insertar(1, new Paciente("", "", "", Genero(0), 0));
-	if (sv->estaVaciaPrioridad(1))
+	sv->insertar(2, new Paciente("", "", "", Genero(0), 0));
+	if (sv->estaVaciaPrioridad(2))
 		cerr << "Error la cola con prioridad 0 NO deberia estar vacia" << endl;
 
 	delete sv;
@@ -84,7 +83,7 @@ void probarNumPacientesServicio() {
 	sv->insertar(3, new Paciente("", "", "", Genero(0), 0));
 	sv->insertar(3, new Paciente("", "", "", Genero(0), 0));
 	sv->insertar(3, new Paciente("", "", "", Genero(0), 0));
-	if (sv->numPacientes(2) != 3)
+	if (sv->numPacientes(3) != 3)
 		cerr
 				<< "Error el numero de pacientes de la cola con prioridad 3 deberia 3"
 				<< endl;

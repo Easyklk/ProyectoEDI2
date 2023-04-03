@@ -20,7 +20,7 @@ int main() {
 //	pruebasInforme();
 //	pruebasListaPacientes();
 //	pruebasListaMedicos();
-	pruebasServicio();
+//	pruebasServicio();
 	return 0;
 }
 
