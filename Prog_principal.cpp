@@ -51,14 +51,14 @@ int menu(string nombre) {
 // Programa principal:
 int main() {
 //	-------Pruebas-------
-	pruebasMedico();
-	pruebasPaciente();
-	pruebasColaPacientes();
-	pruebasInforme();
-	pruebasListaPacientes();
-	pruebasListaMedicos();
-	pruebasServicio();
-	pruebasInformePacientes();
+//	pruebasMedico();
+//	pruebasPaciente();
+//	pruebasColaPacientes();
+//	pruebasInforme();
+//	pruebasListaPacientes();
+//	pruebasListaMedicos();
+//	pruebasServicio();
+//	pruebasInformePacientes();
 	//	-------Pruebas-------
 
 	Hospital *hospital = nullptr;
